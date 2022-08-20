@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "main": "API_GATEWAY.js",
+  "scripts": {
+    "test": "nodemon API_GATEWAY.js",
+    "start": "node API_GATEWAY.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

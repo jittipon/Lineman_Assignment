@@ -1,0 +1,48 @@
+$color-primary: #317fcc;
+$color-white: #eaeaea;
+$color-orange: #e87437;
+$color-green: #008e33;
+
+$title: 5rem;
+$description: 2rem;
+
+.App {
+  text-align: center;
+}
+
+.App-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50vh;
+}
+
+.title {
+  font-size: $title;
+  color: $color-primary;
+}
+
+.form {
+  width: 40%;
+  height: 10rem;
+  margin-left: 30%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  // text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  input {
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid $color-primary;
+    font-size: $description;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
