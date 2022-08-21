@@ -3,8 +3,12 @@ $color-white: #eaeaea;
 $color-orange: #e87437;
 $color-green: #008e33;
 
-$title: 5rem;
-$description: 2rem;
+$extra-large: 7rem;
+$large: 2rem;
+$extra-medium: 1.75rem;
+$medium: 1.5rem;
+$small: 1.25rem;
+$extra-small: 1rem;
 
 .App {
   text-align: center;
@@ -18,28 +22,26 @@ $description: 2rem;
 }
 
 .title {
-  font-size: $title;
+  font-size: $extra-large;
+  font-weight: bold;
   color: $color-primary;
+  margin-top: 5rem;
 }
 
 .form {
   width: 40%;
-  height: 10rem;
+  // height: 10rem;
   margin-left: 30%;
-  background-color: rgb(255, 255, 255);
+
   display: flex;
-  // text-align: center;
   align-items: center;
   justify-content: center;
-  border-radius: 2rem;
-  flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   input {
     text-align: center;
     border: none;
     border-bottom: 2px solid $color-primary;
-    font-size: $description;
+    font-size: $large;
   }
 
   input:focus {

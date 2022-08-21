@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useSearchParams } from 'react-router-dom';
@@ -5,6 +6,7 @@ import axios from 'axios';
 import Item from './components/Item.js';
 import Loader from './components/Loader.js';
 import './style/_mixin.scss'
+
 
 function Home() {
   const [data, setData] = useState(null);
@@ -17,7 +19,7 @@ function Home() {
   const [keyword, setKeyword] = useState(searchParams.get('keyword'));
 
   const onSubmit = async (e) => {
-    
+
   };
 
   const onChange = (e) => {
@@ -27,7 +29,7 @@ function Home() {
   };
 
   useEffect(() => {
-    if (keyword) {
+    if (keyword && keyword.length > 0) {
       setLoading(true);
       setFormValue(keyword);
       axios.get(`http://localhost:7000/trips/${keyword}`)
@@ -65,13 +67,17 @@ function Home() {
   }
   return (
     <div className='App'>
-      <h1 className='title'>เที่ยวไหนดี</h1>
+
+      <h1 className='title'><a href='/'>เที่ยวไหนดี</a></h1>
+
       <div className='form'>
-          <form onSubmit={onSubmit}>
-            {/* <input name="username" placeholder="myname" value={formValue} onChange={onChange} /> */}
-              <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..." value={formValue} onChange={onChange} />
-            
-          </form>
+        <form>
+          <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..."
+            value={formValue}
+            onChange={onChange}
+            onFocus={(e) => e.target.placeholder = ""}
+            onBlur={(e) => e.target.placeholder = "หาที่เที่ยวเเล้วไปกัน..."} />
+        </form>
       </div>
 
       {data != "not found" ?
@@ -85,6 +91,9 @@ function Home() {
           <a href='/'>BACK</a>
         </>
       }
+
+
+      <div style={{height:"5rem"}}/>
 
     </div>
   );
