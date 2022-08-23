@@ -1,3 +1,6 @@
+Jittipon Kumurai
+นาย จิตติพล คำอุไร ครับ
+
 #### Requirement
 
 สร้าง Web Application ที่ใช้ในการค้นหา trip จาก keyword ที่ user กรอกเข้ามา ตามตัวอย่าง Design ด้านล่าง โดยใช้ API จาก API Gateway ที่เราเขียนไว้ใน Task ที่ 1

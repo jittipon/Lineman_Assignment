@@ -18,6 +18,7 @@ $extra-small: 1rem;
 
 .App-loader {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 50vh;
@@ -31,6 +32,20 @@ $extra-small: 1rem;
   text-align: center;
 }
 
+.langBtn {
+  cursor: pointer;
+  width: 4rem;
+  height: 2rem;
+}
+
+.language-Btn {
+  display: flex;
+  justify-content: end;
+  text-align: center;
+  margin-top: 2rem;
+  margin-right: 2rem;
+}
+
 .form {
   width: 40%;
   // height: 10rem;
@@ -39,6 +54,7 @@ $extra-small: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
 
   input {
     text-align: center;

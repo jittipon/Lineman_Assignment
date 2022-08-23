@@ -64,7 +64,11 @@ function Item(props) {
                     <p dangerouslySetInnerHTML={{ __html: (replaceWithBr(props.item.description.substring(0, 200)) + '...') }}></p>
                     {/* <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a> */}
                     <div style={{ textAlign: "center" }}>
-                        <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
+                        {props.language != "th"
+                            ? <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">Read more</Button>
+                            : <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
+                        }
+                        
                     </div>
                 </div>
 
