@@ -7,6 +7,8 @@ import Item from './components/Item.js';
 import Loader from './components/Loader.js';
 import './style/_mixin.scss'
 import ScrollButton from './components/ScrollButton.js';
+import SearchButton from './components/SearchButton.js';
+import { SearchOutlined } from '@ant-design/icons';
 
 function Home() {
   const [data, setData] = useState(null);
@@ -36,36 +38,27 @@ function Home() {
     window.location.reload(false);
   }
 
-
   const changeLanguage = () => {
     if (language == "th") {
       setLoadinglan(true);
       setLanguage('en')
-      console.log(language);
-      console.log('case 1' + language);
       refreshPage();
     } else {
       setLoadinglan(true);
       setLanguage('th')
-      console.log(language);
-      console.log('case 2' + language);
       refreshPage();
     }
   }
 
   const checkLocalStorage = async () => {
     if (localStorage['language']) {
-      console.log("USE EFEECT");
       langLocal = JSON.parse(localStorage.getItem('language'));
-      console.log('langLocal', langLocal);
       setLanguage(langLocal);
     }
   }
 
   const fetchData = () => {
-    console.log("langLocalXXXXXXXXXXXXXXX " + langLocal);
     if (langLocal == "th") {
-      console.log("THAILANDDDDDDDDDDDDDDDD");
       if (keyword) {
         setFormValue(keyword);
         axios.get(`http://localhost:7000/trips/${keyword}`)
@@ -94,7 +87,6 @@ function Home() {
       }
 
     } else {
-      console.log("ENGLISHHHHHHHHHHHHHHHHHHHH");
       if (keyword) {
         setFormValue(keyword);
         axios.get(`http://localhost:7000/tripsenglish/${keyword}`)
@@ -122,15 +114,12 @@ function Home() {
           });
       }
     }
-
   }
 
   useEffect(() => {
     if (isMounted.current) {
-      console.log("USEEFFECT ALONE " + language);
       localStorage.setItem('language', JSON.stringify(language));
     } else {
-      console.log("Change IS MOUNTED");
       isMounted.current = true;
     }
   }, [language]);
@@ -138,7 +127,6 @@ function Home() {
   useEffect(() => {
     checkLocalStorage();
     fetchData();
-
   }, []);
 
   if (loading) {
@@ -171,38 +159,48 @@ function Home() {
       }
 
       <div className='form'>
-
         {language != "th"
-          ? <form>
+          ? <form className='row'>
             <input name="keyword" placeholder="find and go..."
               value={formValue}
               onChange={onChange}
               onFocus={(e) => e.target.placeholder = ""}
+              style={{marginRight:"2rem"}}
               onBlur={(e) => e.target.placeholder = "find and go..."} />
+            <SearchButton type="submit" value="Submit" />
           </form>
 
-          : <form>
-          <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..."
-            value={formValue}
-            onChange={onChange}
-            onFocus={(e) => e.target.placeholder = ""}
-            onBlur={(e) => e.target.placeholder = "หาที่เที่ยวเเล้วไปกัน..."} />
-        </form>
+          : <form className='row'>
+            <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..."
+              value={formValue}
+              onChange={onChange}
+              onFocus={(e) => e.target.placeholder = ""}
+              style={{marginRight:"2rem"}}
+              onBlur={(e) => e.target.placeholder = "หาที่เที่ยวเเล้วไปกัน..."} />
+            <SearchButton type="submit" value="Submit" />
+          </form>
         }
-
-
       </div>
 
-      {data != "not found" ?
-        <>
+      {data != "not found"
+        ? <>
           {data.map((item, index) => (
-            <Item key={index} item={item} language={language}/>
+            <Item key={index} item={item} language={language} />
           ))}
         </>
-        : <div style={{ marginTop: "10rem" }}>
-          <div >ไม่พบสถานที่ ที่ตรงกับค้นหาที่คุณต้องการ</div>
-          <a href='/'>กลับไปค้นหาใหม่อีกครั้ง</a>
-        </div>
+        : <>
+          {language != "th"
+            ? <div style={{ marginTop: "10rem", textAlign: "center", fontSize: "1.5rem" }}>
+              <div>We not found place from your keyword</div>
+              <a href='/' style={{ color: "orange" }}>Back</a>
+            </div>
+            : <div style={{ marginTop: "10rem", textAlign: "center", fontSize: "1.5rem" }}>
+              <div>ไม่พบสถานที่ ที่ตรงกับค้นหาที่คุณต้องการ</div>
+              <a href='/' style={{ color: "orange" }}>กลับไปค้นหาใหม่อีกครั้ง</a>
+            </div>
+          }
+        </>
+
       }
 
       <ScrollButton />

@@ -68,7 +68,7 @@ function Item(props) {
                             ? <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">Read more</Button>
                             : <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
                         }
-                        
+
                     </div>
                 </div>
 

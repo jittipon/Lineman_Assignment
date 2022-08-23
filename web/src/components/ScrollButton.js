@@ -27,8 +27,10 @@ const ScrollButton = () => {
   return (
     <div>
       <BsFillArrowUpSquareFill onClick={scrollToTop}
-        style={{ display: visible ? 'inline' : 'none', cursor: "pointer",
-        color: "#317fcc", fontSize: "3rem", position: "fixed", bottom: "40px", zIndex: "1", left: "95%" }} />
+        style={{
+          display: visible ? 'inline' : 'none', cursor: "pointer",
+          color: "#317fcc", fontSize: "3rem", position: "fixed", bottom: "40px", zIndex: "1", left: "95%"
+        }} />
     </div>
   );
 }

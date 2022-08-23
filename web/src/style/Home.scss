@@ -1,7 +1,9 @@
 // color
-$color-primary: #317fcc;
+$color-primary: #277BC0;
 $color-white: #eaeaea;
-$color-orange: #e87437;
+$color-orange: #FFB200;
+$color-orange2: #FFCB42;
+$color-orange3: #FFF4CF;
 $color-green: #008e33;
 
 //font size
@@ -34,8 +36,8 @@ $extra-small: 1rem;
 
 .langBtn {
   cursor: pointer;
-  width: 4rem;
-  height: 2rem;
+  width: 3rem;
+  height: 1.5rem;
 }
 
 .language-Btn {
@@ -47,9 +49,8 @@ $extra-small: 1rem;
 }
 
 .form {
-  width: 40%;
-  // height: 10rem;
-  margin-left: 30%;
+  align-self: center;
+  margin-left: 5%;
 
   display: flex;
   align-items: center;
@@ -65,5 +66,10 @@ $extra-small: 1rem;
 
   input:focus {
     outline: none;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
   }
 }
