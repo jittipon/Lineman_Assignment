@@ -10,27 +10,31 @@ Jittipon Kumurai
 
 ในการแสดงผลข้อมูลที่ได้มา จะต้องเป็นตามที่กำหนดไว้ดังต่อไปนี้
 
-- [done] เมื่อกดชื่อทริป จะต้อง link ไปยัง url ที่ได้จาก trip data
-- [done] เมื่อกดอ่านต่อ จะต้อง link ไปยัง url ที่ได้จาก trip data
-- [done] จะต้องมีการแสดงผลรูปที่ได้รับมา เพื่อดึงดูดให้ user กดเข้าไปที่ตัวทริป
-- [done] หมวดหมู่ที่แสดง สามารถกดและกลายเป็น search keyword โดยเป็นชื่อ tag นั้น
-- [done] User สามารถ copy link และส่งต่อไปให้เพื่อน สำหรับ keyword เดียวกัน
+- [Done] เมื่อกดชื่อทริป จะต้อง link ไปยัง url ที่ได้จาก trip data
+- [Done] เมื่อกดอ่านต่อ จะต้อง link ไปยัง url ที่ได้จาก trip data
+- [Done] จะต้องมีการแสดงผลรูปที่ได้รับมา เพื่อดึงดูดให้ user กดเข้าไปที่ตัวทริป
+- [Done] หมวดหมู่ที่แสดง สามารถกดและกลายเป็น search keyword โดยเป็นชื่อ tag นั้น
+- [Done] User สามารถ copy link และส่งต่อไปให้เพื่อน สำหรับ keyword เดียวกัน
 
 
 ### How to run
 
-ใช้ 3 เทอร์มิน่อลครับ 
+ใช้ 4 เทอร์มิน่อลครับ 
 
 terminal 1
     cd json-server
     npm start
 
 terminal 2
+    cd json-server
+    npm run english
+
+terminal 3
     cd api-gateway
     npm start
  - ใช้ node เขียนตัว api-gateway server ขึ้นมาครับมี getall กับ get by keyword
 
-terminal 3
+terminal 4
     cd web
     npm start
 
