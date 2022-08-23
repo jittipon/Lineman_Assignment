@@ -16,28 +16,28 @@
         font-weight: bold;
         font-size: $large;
         color: $color-primary;
-        padding-left: 5rem;
-        padding-right: 5rem;
-        margin-top: 4rem;
+        padding-left: 3rem;
+        padding-right: 4rem;
+        margin-top: 2rem;
     }
 
     .item-description {
         font-size: $small;
-        padding-top: 3rem;
-        padding-left: 6rem;
+        padding-top: 1rem;
+        padding-left: 3rem;
         padding-right: 6rem;
         padding-bottom: 3rem;
     }
 
     .item-largeimage {
-        width: 43rem;
+        width: 42.4rem;
         height: 20rem;
-        margin-bottom:0.5rem;
     }
 
-    .item-listimage > div:nth-child(2) {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
+    .item-listimage > div:nth-child(3) {
+        margin-top: 0.2rem;
+        margin-left: 0.2rem;
+        margin-right: 0.2rem;
     }
 
     .item-smallimage {
@@ -46,8 +46,20 @@
         
     }
 
+    .item-tag {
+        display: flex;
+        flex-direction: row;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-left: 3rem;
+        // margin-right: 10rem;
+    }
+
     .small-font {
         font-size: $extra-small;
     }
+  }
 
-}
+
+
+

@@ -1,8 +1,10 @@
+// color
 $color-primary: #317fcc;
 $color-white: #eaeaea;
 $color-orange: #e87437;
 $color-green: #008e33;
 
+//font size
 $extra-large: 7rem;
 $large: 2rem;
 $extra-medium: 1.75rem;
@@ -11,7 +13,7 @@ $small: 1.25rem;
 $extra-small: 1rem;
 
 .App {
-  text-align: center;
+  // text-align: center;
 }
 
 .App-loader {
@@ -26,6 +28,7 @@ $extra-small: 1rem;
   font-weight: bold;
   color: $color-primary;
   margin-top: 5rem;
+  text-align: center;
 }
 
 .form {

@@ -6,7 +6,7 @@ import axios from 'axios';
 import Item from './components/Item.js';
 import Loader from './components/Loader.js';
 import './style/_mixin.scss'
-
+import ScrollButton from './components/ScrollButton.js';
 
 function Home() {
   const [data, setData] = useState(null);
@@ -14,22 +14,20 @@ function Home() {
   const [error, setError] = useState(null);
   const [formValue, setFormValue] = useState('');
 
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyword, setKeyword] = useState(searchParams.get('keyword'));
 
-  const onSubmit = async (e) => {
-
-  };
-
+  //use regex to not allow whitespace in input
   const onChange = (e) => {
-    // Force form value typed in form to match correct format
     const val = e.target.value;
-    setFormValue(val);
+    const re = /^\S*$/;
+    if (re.test(val)) {
+      setFormValue(val);
+    }
   };
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) {
+    if (keyword) {
       setLoading(true);
       setFormValue(keyword);
       axios.get(`http://localhost:7000/trips/${keyword}`)
@@ -61,15 +59,15 @@ function Home() {
 
   if (loading) {
     return <div className='App-loader'><Loader /></div>
+    //loading on slow internet
   }
   if (error) {
     return <div>Error please comeback agin later</div>
+    //error when server is down
   }
   return (
     <div className='App'>
-
       <h1 className='title'><a href='/'>เที่ยวไหนดี</a></h1>
-
       <div className='form'>
         <form>
           <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..."
@@ -86,15 +84,14 @@ function Home() {
             <Item key={index} item={item} />
           ))}
         </>
-        : <>
-          <div>ไม่พบคำค้นหาที่คุณต้องการ</div>
-          <a href='/'>BACK</a>
-        </>
+        : <div style={{ marginTop: "10rem" }}>
+          <div >ไม่พบสถานที่ ที่ตรงกับค้นหาที่คุณต้องการ</div>
+          <a href='/'>กลับไปค้นหาใหม่อีกครั้ง</a>
+        </div>
       }
 
-
-      <div style={{height:"5rem"}}/>
-
+      <ScrollButton />
+      <div style={{ height: "5rem" }} />
     </div>
   );
 }

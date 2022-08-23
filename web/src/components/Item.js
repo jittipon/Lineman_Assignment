@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Image, Tag } from 'antd';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Button, Radio } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
+
 
 function Item(props) {
     const [visible, setVisible] = useState(false);
 
+    function replaceWithBr(e) {
+        return e.replace(/\n/g, "<br />")
+    }
 
     return (
         <div className='item'>
@@ -41,7 +47,7 @@ function Item(props) {
                         {props.item.photos.map((photo, index) => (
                             index != 0
                                 ? <Image className='item-smallimage' key={index} src={photo} />
-                                : null
+                                : <Image style={{ display: 'none', }} className='item-smallimage' key={index} src={photo} />
                         ))}
                     </Image.PreviewGroup>
                 </div>
@@ -53,15 +59,25 @@ function Item(props) {
                         {props.item.title}
                     </a>
                 </div>
-                <h3 className='item-description' >{props.item.description.substring(0, 200)} ... <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a></h3>
+                <div className='item-description'>
+                    {/* <h3 className='item-description' >{props.item.description.substring(0, 200)} ... <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a></h3> */}
+                    <p dangerouslySetInnerHTML={{ __html: (replaceWithBr(props.item.description.substring(0, 200)) + '...') }}></p>
+                    {/* <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a> */}
+                    <div style={{ textAlign: "center" }}>
+                        <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
+                    </div>
+                </div>
 
-                {props.item.tags.map((tag, index) => (
-                    // <Image key={index}  src={tag} />
-                    <Tag color="processing" key={index}>
-                        <a className='small-font' href={"http://localhost:3000/?keyword=" + tag}>{tag}</a>
-                    </Tag>
-                ))}
-
+                <div className='item-tag'>
+                    <h3 style={{ marginRight: "1rem", marginTop: "0.5rem" }}>หมวด</h3>
+                    <div>
+                        {props.item.tags.map((tag, index) => (
+                            <Tag color="processing" key={index} style={{ marginTop: "0.5rem" }}>
+                                <a className='small-font' href={"http://localhost:3000/?keyword=" + tag}>{tag}</a>
+                            </Tag>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
