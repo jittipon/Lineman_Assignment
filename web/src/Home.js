@@ -48,45 +48,15 @@ function Home() {
     }
   }
 
-  const checkLocalStorage = () => {
+  const checkLocalStorage = async () => {
     if (localStorage['language']) {
       langLocal = JSON.parse(localStorage.getItem('language'));
       setLanguage(langLocal);
-    } else {
-      localStorage.setItem('language', JSON.stringify('th'));
     }
   }
 
   const fetchData = () => {
-    if (langLocal == "en") {
-      if (keyword) {
-        setFormValue(keyword);
-        axios.get(`http://localhost:7000/tripsenglish/${keyword}`)
-          .then(response => {
-            setData(response.data);
-            console.log(response.data);
-            setLoading(false);
-          }).catch(error => {
-            setError(error);
-            console.log('error', error);
-            setLoading(false);
-          }
-          );
-      }
-      else {
-        axios.get('http://localhost:7000/tripsenglish')
-          .then(response => {
-            setData(response.data);
-            setLoading(false);
-            console.log(response.data);
-          }).catch(error => {
-            setError(error);
-            console.log(error);
-            setLoading(false);
-          });
-      }
-
-    } else {
+    if (langLocal == "th") {
       if (keyword) {
         setFormValue(keyword);
         axios.get(`http://localhost:7000/trips/${keyword}`)
@@ -103,6 +73,34 @@ function Home() {
       }
       else {
         axios.get('http://localhost:7000/trips')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+            console.log(response.data);
+          }).catch(error => {
+            setError(error);
+            console.log(error);
+            setLoading(false);
+          });
+      }
+
+    } else {
+      if (keyword) {
+        setFormValue(keyword);
+        axios.get(`http://localhost:7000/tripsenglish/${keyword}`)
+          .then(response => {
+            setData(response.data);
+            console.log(response.data);
+            setLoading(false);
+          }).catch(error => {
+            setError(error);
+            console.log('error', error);
+            setLoading(false);
+          }
+          );
+      }
+      else {
+        axios.get('http://localhost:7000/tripsenglish')
           .then(response => {
             setData(response.data);
             setLoading(false);
@@ -135,7 +133,7 @@ function Home() {
   }
   if (loadinglan) {
     //loading on when change language
-    return <div className='App-loader'><Loader /><h1>กำลังเปลี่ยนภาษา</h1></div>
+    return <div className='App-loader'><Loader /><h1 style={{marginTop:"2rem"}}>กำลังเปลี่ยนภาษา</h1></div>
   }
   if (error) {
     //error when server is down
