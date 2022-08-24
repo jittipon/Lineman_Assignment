@@ -144,8 +144,8 @@ function Home() {
       <div className='language-Btn'>
         <div className='row'>
           {language != "th"
-            ? <Link to={'/'}><img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_the_United_Kingdom.svg')} alt="eng flag" /></Link>
-            : <Link to={'/'}><img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_Thailand.svg')} alt="thai flag" /></Link>
+            ? <img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_the_United_Kingdom.svg')} alt="eng flag" />
+            : <img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_Thailand.svg')} alt="thai flag" />
           }
           <h1 >{language}</h1>
         </div>
