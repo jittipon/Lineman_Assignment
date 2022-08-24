@@ -48,43 +48,17 @@ function Home() {
     }
   }
 
-  const checkLocalStorage = async () => {
+  const checkLocalStorage = () => {
     if (localStorage['language']) {
       langLocal = JSON.parse(localStorage.getItem('language'));
       setLanguage(langLocal);
+    } else {
+      localStorage.setItem('language', JSON.stringify('th'));
     }
   }
 
   const fetchData = () => {
-    if (langLocal == "th") {
-      if (keyword) {
-        setFormValue(keyword);
-        axios.get(`http://localhost:7000/trips/${keyword}`)
-          .then(response => {
-            setData(response.data);
-            console.log(response.data);
-            setLoading(false);
-          }).catch(error => {
-            setError(error);
-            console.log('error', error);
-            setLoading(false);
-          }
-          );
-      }
-      else {
-        axios.get('http://localhost:7000/trips')
-          .then(response => {
-            setData(response.data);
-            setLoading(false);
-            console.log(response.data);
-          }).catch(error => {
-            setError(error);
-            console.log(error);
-            setLoading(false);
-          });
-      }
-
-    } else {
+    if (langLocal == "en") {
       if (keyword) {
         setFormValue(keyword);
         axios.get(`http://localhost:7000/tripsenglish/${keyword}`)
@@ -101,6 +75,34 @@ function Home() {
       }
       else {
         axios.get('http://localhost:7000/tripsenglish')
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+            console.log(response.data);
+          }).catch(error => {
+            setError(error);
+            console.log(error);
+            setLoading(false);
+          });
+      }
+
+    } else {
+      if (keyword) {
+        setFormValue(keyword);
+        axios.get(`http://localhost:7000/trips/${keyword}`)
+          .then(response => {
+            setData(response.data);
+            console.log(response.data);
+            setLoading(false);
+          }).catch(error => {
+            setError(error);
+            console.log('error', error);
+            setLoading(false);
+          }
+          );
+      }
+      else {
+        axios.get('http://localhost:7000/trips')
           .then(response => {
             setData(response.data);
             setLoading(false);
