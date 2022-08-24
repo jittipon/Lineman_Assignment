@@ -21,10 +21,11 @@ Frontend Developer
 
 ### How to run
 
-ใช้ 4 เทอร์มิน่อลครับ 
+ใช้ 4 เทอร์มิน่อลครับ npm install ทั้ง 3 folder ครับ api-gateway, json-server, web
 
 terminal 1
     cd json-server
+    npm install
     npm start
 
 terminal 2
@@ -33,11 +34,13 @@ terminal 2
 
 terminal 3
     cd api-gateway
+    npm install
     npm start
  - ใช้ node เขียนตัว api-gateway server ขึ้นมาครับมี getall กับ get by keyword
 
 terminal 4
     cd web
+    npm install
     npm start
 
 
