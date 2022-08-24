@@ -1,14 +1,13 @@
 import 'antd/dist/antd.css';
 import React, { useRef } from 'react';
 import { useState, useEffect } from "react";
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import Item from './components/Item.js';
 import Loader from './components/Loader.js';
 import './style/_mixin.scss'
 import ScrollButton from './components/ScrollButton.js';
 import SearchButton from './components/SearchButton.js';
-import { SearchOutlined } from '@ant-design/icons';
 
 function Home() {
   const [data, setData] = useState(null);
@@ -18,8 +17,8 @@ function Home() {
   const [formValue, setFormValue] = useState('');
   const [language, setLanguage] = useState('th');
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyword] = useState(searchParams.get('keyword'));
+  const [searchParams] = useSearchParams();
+  const [keyword] = useState(searchParams.get('keyword'));
   let langLocal;
 
   //use useRef to stop useEffect from running on first render
@@ -35,16 +34,15 @@ function Home() {
   };
 
   function refreshPage() {
-    window.location.reload(false);
+    window.location.replace('/');
   }
 
   const changeLanguage = () => {
+    setLoadinglan(true);
     if (language == "th") {
-      setLoadinglan(true);
       setLanguage('en')
       refreshPage();
     } else {
-      setLoadinglan(true);
       setLanguage('th')
       refreshPage();
     }
@@ -130,24 +128,24 @@ function Home() {
   }, []);
 
   if (loading) {
-    return <div className='App-loader'><Loader /></div>
     //loading on slow internet
+    return <div className='App-loader'><Loader /></div>
   }
   if (loadinglan) {
-    return <div className='App-loader'><Loader /><h1>กำลังเปลี่ยนภาษา</h1></div>
     //loading on when change language
+    return <div className='App-loader'><Loader /><h1>กำลังเปลี่ยนภาษา</h1></div>
   }
   if (error) {
-    return <div>Error please comeback agin later</div>
     //error when server is down
+    return <div>Error please comeback agin later</div>
   }
   return (
     <div className='App'>
       <div className='language-Btn'>
         <div className='row'>
           {language != "th"
-            ? <img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_the_United_Kingdom.svg')} alt="eng flag" />
-            : <img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_Thailand.svg')} alt="thai flag" />
+            ? <Link to={'/'}><img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_the_United_Kingdom.svg')} alt="eng flag" /></Link>
+            : <Link to={'/'}><img className='langBtn' onClick={changeLanguage} src={require('./assets/Flag_of_Thailand.svg')} alt="thai flag" /></Link>
           }
           <h1 >{language}</h1>
         </div>
@@ -165,17 +163,16 @@ function Home() {
               value={formValue}
               onChange={onChange}
               onFocus={(e) => e.target.placeholder = ""}
-              style={{marginRight:"2rem"}}
+              style={{ marginRight: "2rem" }}
               onBlur={(e) => e.target.placeholder = "find and go..."} />
             <SearchButton type="submit" value="Submit" />
           </form>
-
           : <form className='row'>
             <input name="keyword" placeholder="หาที่เที่ยวเเล้วไปกัน..."
               value={formValue}
               onChange={onChange}
               onFocus={(e) => e.target.placeholder = ""}
-              style={{marginRight:"2rem"}}
+              style={{ marginRight: "2rem" }}
               onBlur={(e) => e.target.placeholder = "หาที่เที่ยวเเล้วไปกัน..."} />
             <SearchButton type="submit" value="Submit" />
           </form>
@@ -200,7 +197,6 @@ function Home() {
             </div>
           }
         </>
-
       }
 
       <ScrollButton />

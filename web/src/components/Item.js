@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Image, Tag } from 'antd';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import { Button, Radio } from 'antd';
+import { Button } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
-
 
 function Item(props) {
     const [visible, setVisible] = useState(false);
@@ -54,39 +52,51 @@ function Item(props) {
             </div>
 
             <div>
-                <div className='item-title'>
-                    <a href={props.item.url} target="_blank">
-                        {props.item.title}
-                    </a>
-                </div>
-                <div className='item-description'>
-                    {/* <h3 className='item-description' >{props.item.description.substring(0, 200)} ... <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a></h3> */}
-                    <p dangerouslySetInnerHTML={{ __html: (replaceWithBr(props.item.description.substring(0, 200)) + '...') }}></p>
-                    {/* <a className='small-font' href={props.item.url} target="_blank">อ่านต่อ</a> */}
-                    <div style={{ textAlign: "center" }}>
+                <div className='item-top-section'>
+                    {props.language != "th"
+                        ? <div className='item-title-en'>
+                            <a href={props.item.url} target="_blank">
+                                {props.item.title}
+                            </a>
+                        </div>
+                        : <div className='item-title-th'>
+                            <a href={props.item.url} target="_blank">
+                                {props.item.title}
+                            </a>
+                        </div>
+                    }
+
+                    <div className='item-description'>
                         {props.language != "th"
-                            ? <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">Read more</Button>
-                            : <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
+                            ? <p dangerouslySetInnerHTML={{ __html: (replaceWithBr(props.item.description.substring(0, 120)) + '...') }}></p>
+                            : <p dangerouslySetInnerHTML={{ __html: (replaceWithBr(props.item.description.substring(0, 200)) + '...') }}></p>
                         }
 
                     </div>
                 </div>
 
-                <div className='item-tag'>
-                    <h3 style={{ marginRight: "1rem", marginTop: "0.5rem" }}>หมวด</h3>
-                    <div>
-                        {props.item.tags.map((tag, index) => (
-                            <Tag color="processing" key={index} style={{ marginTop: "0.5rem" }}>
-                                <a className='small-font' href={"http://localhost:3000/?keyword=" + tag}>{tag}</a>
-                            </Tag>
-                        ))}
+                <div>
+                    <div className='item-readmore'>
+                        {props.language != "th"
+                            ? <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">Read more</Button>
+                            : <Button type="primary" icon={<ArrowRightOutlined />} size={'middle'} href={props.item.url} target="_blank">อ่านต่อ</Button>
+                        }
+                    </div>
+
+                    <div className='item-tag'>
+                        <h3 style={{ marginRight: "1rem", marginTop: "0.5rem" }}>หมวด</h3>
+                        <div>
+                            {props.item.tags.map((tag, index) => (
+                                <Tag color="processing" key={index} style={{ marginTop: "0.5rem" }}>
+                                    <a className='small-font' href={"http://localhost:3000/?keyword=" + tag}>{tag}</a>
+                                </Tag>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
-
 
 export default Item;
