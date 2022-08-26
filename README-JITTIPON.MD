@@ -36,7 +36,7 @@ terminal 3
     cd api-gateway
     npm install
     npm start
- - ใช้ node เขียนตัว api-gateway server ขึ้นมาครับมี getall กับ get by keyword
+ - ใช้ node เขียนตัว api-gateway server ขึ้นมาครับมี get all กับ get by keyword
 
 terminal 4
     cd web
@@ -52,5 +52,5 @@ terminal 4
  - ปิดกั้นการพิมพ์ spacebar เพื่อบล็อคไม่ให้ user กรอกอะไรแปลกๆลงมากันการเกิดข้อผิดพลาดครับ
  - มีฟังก์ชั่น replace <br> แทน /n เวลาแสดงข้อมูลจาก db ตามในดีไซน์
  - รูปภาพสามารถกดเพื่อขยายมาดูได้ ใช้ Image ของ antd ครับ **รูปที่ resolution ไม่เป็นสี่เหลียมจตุรัสจะเเปลกๆหน่อยครับเช่นรูปหอไอเฟ่ล
- - ไม่ได้รองรับ responsive design ครับเพราะคิดว่าจะใช้เวลามากเกินไปในการทำทั้งเวอร์ชั่น mobile และ tablet เเต่เคยทำ responsive design โดยใช้ mediaquery มาก่อนครับ
- - เพิ่มปุ่มเปลี่ยนภาษา thai or english มากดเเล้วจะทำการเปลี่ยนค่า language ที่เก็บใน localstorage เป็นภาษาที่เปลี่ยน เเล้วทำกาเปลี่ยนไปยังหน้าเเรก เเล้วทำการ fetch data ตามภาษาที่เปลี่ยน เห็นพี่เเยกมาเป็น db          สองอันผมเลยจะไม่เอามารวมกันเป็น db เดียวนะครับจะรันเเยกกันเป็นคนละ db จึงจำเป็นต้อง get data มาจากสอง database
+ - ไม่ได้รองรับ responsive design ครับเพราะคิดว่าจะใช้เวลามากเกินไปในการทำทั้งเวอร์ชั่น mobile และ tablet เเต่เคยทำ responsive design โดยใช้ mediaquery มาก่อนครับ **dev บน resolution 1920*1080 ครับผม
+ - เพิ่มปุ่มเปลี่ยนภาษา thai or english มากดเเล้วจะทำการเปลี่ยนค่า language ที่เก็บใน localstorage เป็นภาษาที่เปลี่ยน เเล้วทำการเปลี่ยนไปยังหน้าเเรก เเล้วทำการ fetch data ตามภาษาที่เปลี่ยน เห็นพี่เเยกมาเป็น db          สองอันผมเลยจะไม่เอามารวมกันเป็น db เดียวนะครับจะรันเเยกกันเป็นคนละ db จึงจำเป็นต้อง get data มาจากสอง database
